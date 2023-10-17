@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 
 # Documentation
-from documentations.description import api_description
-from documentations.tags import tags_metadata
+from documents.description import api_description
+from documents.tags import tags_metadata
 
 #Routers
 import routers.router_fragments
