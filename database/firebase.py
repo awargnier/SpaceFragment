@@ -1,5 +1,5 @@
 import firebase_admin
-import pyrebase 
+import pyrebase
 from firebase_admin import credentials
 from configs.firebase_config import firebaseConfig
 
