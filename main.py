@@ -13,7 +13,8 @@ import routers.router_stripe
 app = FastAPI(
     title="Attendance Tracker",
     description=api_description,
-    openapi_tags= tags_metadata
+    openapi_tags= tags_metadata,
+    docs_url='/'
 )
 
 app.include_router(routers.router_fragments.router)

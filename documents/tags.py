@@ -1,6 +1,6 @@
 tags_metadata = [
     {
-        "name": "Students",
+        "name": "Fragments",
         "description": "Create, Modify, Delete, or List Students of your Training Center",
     }
 ]

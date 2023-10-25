@@ -4,10 +4,10 @@ import uuid
 # Model Pydantic = Datatype
 class Fragment(BaseModel):
     id: str
-    name: str
+    fragment: str
 
 class FragmentNoID(BaseModel):
-    name: str
+    fragment: str
 
 class User(BaseModel):
     id: uuid.UUID

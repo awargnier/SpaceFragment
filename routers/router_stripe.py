@@ -1,15 +1,19 @@
-from fastapi import APIRouter,Header, Request, Depends, Body
+from fastapi import APIRouter,Header, Request, Depends, Body, Response
+from fastapi.responses import RedirectResponse
 import stripe
 from firebase_admin import auth
 from database.firebase import db
 from routers.router_auth import get_current_user
+from dotenv import dotenv_values
+import json
 
 router = APIRouter(
   tags=["Stripe"],
   prefix='/stripe'
 )
 
-stripe.api_key='sk_test_51O51taFpU19QAwf9QS8muf0JCxnzqo1cc3TgXVXrw2dZ14NemnuJmwAkNoyZaugbrweYXSb5VZG2UWXBpDP2yCn700bq1hlhEJ'
+config = dotenv_values(".env")
+stripe.api_key=json.load(config['STRIPE_API-KEY'])
 
 YOUR_DOMAIN = 'http://localhost'
 
@@ -30,7 +34,9 @@ async def stripe_checkout():
 
     )
     
-    return checkout_session
+    # return checkout_session
+    response = RedirectResponse(url=checkout_session['url'])
+    return response
   except Exception as e:
     return str(e)
   
