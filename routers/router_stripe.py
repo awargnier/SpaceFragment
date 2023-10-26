@@ -17,7 +17,7 @@ stripe.api_key=config['STRIPE_API_KEY']
 
 YOUR_DOMAIN = 'http://localhost'
 
-@router.post('/checkout')
+@router.get('/checkout')
 async def stripe_checkout():
   try:
     checkout_session=stripe.checkout.Session.create(
@@ -36,6 +36,7 @@ async def stripe_checkout():
     
     # return checkout_session
     response = RedirectResponse(url=checkout_session['url'])
+    
     return response
   except Exception as e:
     return str(e)

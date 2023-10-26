@@ -5,9 +5,11 @@ import uuid
 class Fragment(BaseModel):
     id: str
     fragment: str
+    price: str
 
 class FragmentNoID(BaseModel):
     fragment: str
+    price: str
 
 class User(BaseModel):
     id: uuid.UUID
