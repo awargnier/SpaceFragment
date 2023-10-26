@@ -13,7 +13,7 @@ router = APIRouter(
 )
 
 config = dotenv_values(".env")
-stripe.api_key=json.load(config['STRIPE_API-KEY'])
+stripe.api_key=config['STRIPE_API_KEY']
 
 YOUR_DOMAIN = 'http://localhost'
 

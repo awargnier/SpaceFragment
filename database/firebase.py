@@ -9,9 +9,9 @@ config = dotenv_values(".env")
 
 if not firebase_admin._apps:
   # cred = credentials.Certificate("configs/spacefragmentsapi-firebase-adminsdk-6isup-ef10c227fe.json")
-  cred = credentials.Certificate(json.load(config['FIREBASE_SERVICE_ACCOUNT_KEY']))
+  cred = credentials.Certificate(json.loads(config['FIREBASE_SERVICE_ACCOUNT_KEY']))
   firebase_admin.initialize_app(cred)
 
-firebase = pyrebase.initialize_app(json.load(config['FIREBASE_CONFIG']))
+firebase = pyrebase.initialize_app(json.loads(config['FIREBASE_CONFIG']))
 db = firebase.database()
 authUser = firebase.auth()
