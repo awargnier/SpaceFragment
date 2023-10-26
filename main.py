@@ -11,7 +11,7 @@ import routers.router_auth
 import routers.router_stripe
 
 app = FastAPI(
-    title="Attendance Tracker",
+    title="Space Fragment API",
     description=api_description,
     openapi_tags= tags_metadata,
     docs_url='/'
