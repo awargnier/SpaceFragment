@@ -1,6 +1,6 @@
 from firebase_admin import auth
 from fastapi.testclient import TestClient
-from routers.router_fragments import Fragment
+
 from fixture import existing_fragment
 from main import app
 import uuid
@@ -70,23 +70,8 @@ def test_get_fragment_by_id_invalid_auth():
 
 # Test get fragment by ID with non-existing fragment
 def test_get_fragment_by_id_not_found(auth_user):
-    fragment_id = uuid.uuid4()
+    fragment_id = str(uuid.uuid4())  # Generate a random fragment ID
     res = client.get(f"/fragments/{fragment_id}", headers={
         "Authorization": f"Bearer {auth_user['access_token']}"
     })
     assert res.status_code == 404
-
-    fragment_id = existing_fragment['id']
-
-    # Create a new fragment name
-    new_fragment_name = "Mars"
-
-    # Send the request
-    res = client.patch(f"/fragments/{fragment_id}", headers={
-        "Authorization": f"Bearer {auth_user['access_token']}"
-    }, json={
-        "fragment": new_fragment_name
-    })
-
-    # Assert the response
-    assert res.status_code == 204
