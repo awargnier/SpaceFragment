@@ -6,6 +6,7 @@ from database.firebase import db
 from routers.router_auth import get_current_user
 from dotenv import dotenv_values
 import json
+import os
 
 router = APIRouter(
   tags=["Stripe"],
@@ -83,6 +84,8 @@ async def stripe_usage(userData: int = Depends(get_current_user)):
 
 
 def increment_stripe(userId: str):
+  if os.getenv('TESTING') == 'True':
+        return
   firebase_user = auth.get_user(userId)
   stripe_data = db.child("users").child(firebase_user.uid).child("stripe").get().val()
   print(stripe_data.values())
