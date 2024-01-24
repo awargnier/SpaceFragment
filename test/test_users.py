@@ -46,9 +46,9 @@ def test_get_user_by_id_invalid_auth():
     res = client.get(f"/users/{user_id}")
     assert res.status_code == 401
 
-def test_get_fragment_by_id_not_found(auth_user):
+def test_get_user_by_id_not_found(auth_user):
     user_id = str(uuid.uuid4())  
-    res = client.get(f"/fragments/{user_id}", headers={
+    res = client.get(f"/users/{user_id}", headers={
         "Authorization": f"Bearer {auth_user['access_token']}"
     })
     assert res.status_code == 404
