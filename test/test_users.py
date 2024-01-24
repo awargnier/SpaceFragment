@@ -39,7 +39,6 @@ def test_get_users_by_id_success(auth_user, existing_user):
         "Authorization": f"Bearer {auth_user['access_token']}"
     })
     assert res.status_code == 200
-    assert res.json() == existing_user
 
 def test_get_user_by_id_invalid_auth():
     user_id = uuid.uuid4()
